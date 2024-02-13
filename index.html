@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="img/todo-icon.png">
+        <link rel="stylesheet" href="style.css">
+        <title>To-Do List</title>
+    </head>
+
+    <body>
+        
+        <main id="app">
+            
+            <section class="todo-list">
+                
+                
+                <h3>To-do List</h3>
+                
+                <div class="all-todos">
+                    <div v-for="(todo, index) in toDos" :key="index" :class="{ 'single-todo': true, 'done': todo.done }" @click="toggleDone(todo)">
+                        <p>{{ todo.text }}</p>
+                    </div>
+                </div>                
+
+                </div>
+
+                <button class="clear" @click="clearAll">Clear All</button>
+                <input type="text" placeholder="Add new to-do" v-model="newToDoText" @keydown.enter="addToDo">
+                <button class="add" @click="addToDo">Add</button>
+
+                <div class="instructions">
+                    Instructions:
+                    <ul>
+                        <li>Click the to-do text to toggle between done / undone</li>
+                        <li>Use clear all button to remove all items</li>
+                        <li>Use the input field to add new to-dos</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+        <script type="module" src="scripts.mjs"></script>
+    </body>
+
+</html>
