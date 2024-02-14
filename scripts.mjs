@@ -22,8 +22,15 @@ const app = ({
       }else{
         alert("The field must be filled.");
       }
-    }
-  }
+    },
+
+  },
+  created(){ //Saving items in the local storage
+      this.toDos = localStorage.getItem("toDos") ? JSON.parse(localStorage.getItem("toDos")) : this.toDos;
+  },
+  updated() { //Updating the list
+    localStorage.setItem("toDos", JSON.stringify(this.toDos));
+}
 
 });
 
