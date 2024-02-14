@@ -2,12 +2,8 @@ const app = ({
 
   data(){
     return{
-      toDos: [
-        { text: 'Learn HTML, CSS and Javascript', done: true},
-        { text: 'Learn the basics of Vue JS', done: true},
-        { text: 'Complete Vue JS Challenge with excellence', done: false}
-      ],
-      newToDoText: ''
+      toDos: [],
+      newToDo: ''
     };
   },
   
@@ -19,9 +15,12 @@ const app = ({
       this.toDos = [];
     },
     addToDo(){
-      if(this.newToDoText.trim() !== ''){ //Trim function removes the blanks of the text
-        this.toDos.push({text: this.newToDoText, done: false});
-        this.newToDoText = '';
+      if(this.newToDo.trim() !== ''){ //Trim function removes the blanks of the text
+        this.toDos.push({text: this.newToDo, done: false});
+        this.newToDo = '';
+        localStorage.setItem("toDos", JSON.stringify(this.toDos));
+      }else{
+        alert("The field must be filled.");
       }
     }
   }
